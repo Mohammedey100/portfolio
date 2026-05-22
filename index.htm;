@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البورتفوليو الخاص بي</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">اسمك</div>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عني</a></li>
+                <li><a href="#projects">المشاريع</a></li>
+                <li><a href="#contact">اتصل بي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>مرحبًا، أنا [محمد]</h1>
+        <p>مطور ويب ومتاجر إلكترونية</p>
+    </section>
+
+    <section id="about" class="about">
+        <h2>عني</h2>
+        <p>مطور ويب متخصص في PHP، MySQL، Flutter، وبناء المتاجر الإلكترونية</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>المشاريع</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>متجر إلكتروني</h3>
+                <p>متجر PHP/MySQL مع ووكومرس</p>
+            </div>
+            <div class="project-card">
+                <h3>تطبيق Flutter</h3>
+                <p>تطبيق موبايل متكامل</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>اتصل بي</h2>
+        <p>البريد:mohammedey100@email.com</p>
+        <p>الهاتف: 1125287102+20  XXX XXXX</p>
+    </section>
+
+    <footer>
+        <p>© 2026 جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
