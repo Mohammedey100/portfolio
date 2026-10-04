@@ -1,58 +1,237 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البورتفوليو الخاص بي</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>محمد رجب | مطور ويب وتطبيقات موبايل</title>
+<meta name="description" content="أبني متاجر إلكترونية وتطبيقات ويب وموبايل بـ Flutter وPHP وCloudflare Workers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f2a2e; --muted:#4d6468; --bg:#f5f8f7; --card:#ffffff;
+  --line:#d5e2e0; --teal:#0e8c7f; --teal-dark:#0a6b61; --amber:#e8a33d;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ink:#e8f1f0; --muted:#9db3b6; --bg:#0c1a1d; --card:#12262a; --line:#24403f; --teal:#2fc0b0; --teal-dark:#5fd6c8; color-scheme:dark;}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* header */
+header{border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:12px;text-decoration:none}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+.who b{display:block;line-height:1.3}
+.who small{color:var(--muted);font-size:14px}
+nav ul{list-style:none;display:flex;gap:22px;padding:0;flex-wrap:wrap}
+nav ul a{text-decoration:none;color:var(--muted);font-weight:500}
+nav ul a:hover{color:var(--teal)}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hero h1{font-size:clamp(30px,5.2vw,52px);line-height:1.35;font-weight:700;max-width:18ch}
+.hero p{margin-top:18px;color:var(--muted);max-width:56ch;font-size:19px}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 24px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid var(--teal);transition:background .15s}
+.btn.primary{background:var(--teal);color:#fff}
+.btn.primary:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
+.btn.ghost{color:var(--teal)}
+.btn.ghost:hover{background:var(--card)}
+
+/* order lifecycle strip: the one memorable element */
+.flow{margin-top:48px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.flow h2{font-size:15px;color:var(--muted);font-weight:500;margin-bottom:16px}
+.flow ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.flow li{position:relative;padding-top:30px;font-weight:700;font-size:16px;opacity:.35;animation:lit .5s ease forwards}
+.flow li::before{content:"";position:absolute;top:6px;right:0;width:14px;height:14px;border-radius:50%;background:var(--teal)}
+.flow li::after{content:"";position:absolute;top:12px;right:14px;left:0;height:2px;background:var(--line)}
+.flow li:last-child::after{display:none}
+.flow li:nth-child(1){animation-delay:.3s}
+.flow li:nth-child(2){animation-delay:1s}
+.flow li:nth-child(3){animation-delay:1.7s}
+.flow li:nth-child(4){animation-delay:2.4s}
+.flow li span{display:block;font-weight:400;font-size:14px;color:var(--muted)}
+@keyframes lit{to{opacity:1}}
+
+/* sections */
+section{padding:48px 0}
+section>.wrap>h2{font-size:28px;margin-bottom:8px}
+.lead{color:var(--muted);margin-bottom:28px;max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card h3{font-size:20px;line-height:1.5}
+.card p{color:var(--muted)}
+.tech{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:auto}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{padding:8px 16px;border-radius:8px;border:1px solid var(--line);text-decoration:none;font-size:15px;font-weight:500}
+.links a.main{background:var(--teal);border-color:var(--teal);color:#fff}
+.links a:hover{border-color:var(--teal)}
+.video{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--line)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.services div{border-top:3px solid var(--teal);padding-top:14px}
+.services h3{font-size:18px;margin-bottom:4px}
+.services p{color:var(--muted);font-size:16px}
+
+/* contact */
+.contact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;text-align:center}
+.contact h2{margin-bottom:8px}
+.contact p{color:var(--muted);margin-bottom:22px}
+.contact .cta{justify-content:center;margin-top:0}
+
+footer{padding:32px 0;color:var(--muted);font-size:15px;text-align:center}
+
+@media (max-width:640px){
+  .hero{padding:44px 0 36px}
+  .flow ol{grid-template-columns:1fr 1fr;row-gap:20px}
+  .flow li:nth-child(2)::after{display:none}
+  .contact{padding:28px 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .flow li{animation:none;opacity:1}
+}
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">اسمك</div>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">عني</a></li>
-                <li><a href="#projects">المشاريع</a></li>
-                <li><a href="#contact">اتصل بي</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="home" class="hero">
-        <h1>مرحبًا، أنا [محمد]</h1>
-        <p>مطور ويب ومتاجر إلكترونية</p>
-    </section>
+<header>
+  <div class="wrap">
+    <nav aria-label="القائمة الرئيسية">
+      <a class="who" href="#top">
+        <span class="avatar" aria-hidden="true">MR</span>
+        <span><b>محمد رجب</b><small>مطور ويب ومتاجر إلكترونية</small></span>
+      </a>
+      <ul>
+        <li><a href="#projects">المشاريع</a></li>
+        <li><a href="#apps">تطبيقات Google Play</a></li>
+        <li><a href="#services">الخدمات</a></li>
+        <li><a href="#contact">تواصل معي</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <section id="about" class="about">
-        <h2>عني</h2>
-        <p>مطور ويب متخصص في PHP، MySQL، Flutter، وبناء المتاجر الإلكترونية</p>
-    </section>
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <h1>أبني متاجر إلكترونية وتطبيقات ويب وموبايل مخصصة.</h1>
+      <p>أعمل على <bdi dir="ltr">PHP</bdi> و<bdi dir="ltr">MySQL</bdi> و<bdi dir="ltr">Flutter</bdi> و<bdi dir="ltr">Cloudflare Workers</bdi>، وأنشر تطبيقاتي بنفسي على Google Play. تعال نبني مشروعك.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://wa.me/201125287102" target="_blank" rel="noopener">اطلب مشروعك على واتساب</a>
+        <a class="btn ghost" href="#projects">شاهد أعمالي</a>
+      </div>
 
-    <section id="projects" class="projects">
-        <h2>المشاريع</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>متجر إلكتروني</h3>
-                <p>متجر PHP/MySQL مع ووكومرس</p>
-            </div>
-            <div class="project-card">
-                <h3>تطبيق Flutter</h3>
-                <p>تطبيق موبايل متكامل</p>
-            </div>
+      <div class="flow" aria-label="دورة الطلب في المتجر">
+        <h2>هكذا يمر الطلب داخل متجري التجريبي:</h2>
+        <ol>
+          <li>التحقق<span>من بيانات الطلب</span></li>
+          <li>حجز المخزون<span>للمنتجات المطلوبة</span></li>
+          <li>انتظار الدفع<span>مع تحديث لحظي</span></li>
+          <li>إنهاء الطلب<span>وتأكيد العميل</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>المشاريع</h2>
+      <p class="lead">مشروعان كاملان، واحد للويب وواحد للموبايل.</p>
+      <div class="grid">
+
+        <article class="card">
+          <h3>متجر إلكتروني بـ <bdi dir="ltr">Workflows Starter</bdi></h3>
+          <p>دورة الطلب كاملة (التحقق، حجز المخزون، انتظار الدفع، إنهاء الطلب) مبنية على <bdi dir="ltr">Workflow</bdi> فوق <bdi dir="ltr">Cloudflare Workers</bdi> و<bdi dir="ltr">Durable Objects</bdi>، مع تحديثات لحظية للحالة.</p>
+          <div class="video">
+            <!-- ضع هنا رابط الفيديو: غيّر VIDEO_ID -->
+            <iframe src="https://www.youtube.com/embed/aWMRZKdPmgU" title="شرح المتجر" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="links">
+            <a class="main" href="#" target="_blank" rel="noopener">فتح عرض الـ Workflow</a>
+          </div>
+          <p class="tech" dir="ltr" style="text-align:right">TypeScript, Cloudflare Workers, Workflows, Durable Objects, WebSockets</p>
+        </article>
+
+        <article class="card">
+          <h3>تطبيق <bdi dir="ltr">Flutter</bdi> للمتجر</h3>
+          <p>تطبيق موبايل متكامل لعرض المنتجات وإضافتها للسلة وتتبع الطلبات، مربوط بمتجر <bdi dir="ltr">PHP/MySQL</bdi> عبر واجهة برمجية (<bdi dir="ltr">API</bdi>).</p>
+          <p class="tech" dir="ltr" style="text-align:right">Flutter, Dart, REST API, HTTP</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="wrap">
+      <h2>تطبيقاتي على Google Play</h2>
+      <p class="lead">تطبيقات نشرتها بنفسي، من التصميم حتى النشر.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>flashScan</h3>
+          <p>تطبيق لمسح المستندات ضوئياً من الموبايل.</p>
+          <div class="links"><a class="main" href="https://play.google.com/store/apps/details?id=essentialsco1.shop" target="_blank" rel="noopener">حمّل من Google Play</a></div>
+        </article>
+        <article class="card">
+          <h3>قل حكمة</h3>
+          <p>تطبيق عربي مبني بـ <bdi dir="ltr">Flutter</bdi>.</p>
+          <div class="links"><a class="main" href="https://play.google.com/store/apps/details?id=com.moham.qulhikma" target="_blank" rel="noopener">حمّل من Google Play</a></div>
+        </article>
+        <article class="card">
+          <h3>قصة سيدنا آدم</h3>
+          <p>تطبيق يحكي قصة سيدنا آدم عليه السلام، مبني بـ <bdi dir="ltr">Flutter</bdi>.</p>
+          <div class="links"><a class="main" href="https://play.google.com/store/apps/details?id=com.mohammedragab.prophetadam" target="_blank" rel="noopener">حمّل من Google Play</a></div>
+        </article>
+        <article class="card">
+          <h3>قصة النبي يوسف</h3>
+          <p>تطبيق يحكي قصة النبي يوسف عليه السلام، مبني بـ <bdi dir="ltr">Flutter</bdi>.</p>
+          <div class="links"><a class="main" href="https://play.google.com/store/apps/details?id=com.mohammedragab.prophetyusuf" target="_blank" rel="noopener">حمّل من Google Play</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>ماذا أبني لك</h2>
+      <p class="lead">أتفق معك على المطلوب أولاً، ثم أسلّمك مشروعاً يعمل ومنشوراً.</p>
+      <div class="services">
+        <div><h3>متجر إلكتروني</h3><p>عرض المنتجات والسلة والدفع وإدارة الطلبات.</p></div>
+        <div><h3>تطبيق موبايل</h3><p>تطبيق أندرويد بـ <bdi dir="ltr">Flutter</bdi> مع نشره على Google Play.</p></div>
+        <div><h3>لوحة تحكم لحظية</h3><p>أرقام وطلبات تتحدث أمامك بدون إعادة تحميل الصفحة.</p></div>
+        <div><h3>مكالمات فيديو وصوت</h3><p>تواصل مباشر داخل الموقع أو التطبيق باستخدام <bdi dir="ltr">WebRTC</bdi>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>عندك مشروع؟</h2>
+        <p>اكتب لي فكرتك وأرد عليك بالتفاصيل والوقت المتوقع.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://wa.me/201125287102" target="_blank" rel="noopener">راسلني على واتساب</a>
+          <a class="btn ghost" href="mailto:mohammedey100@gmail.com">أرسل بريداً</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <section id="contact" class="contact">
-        <h2>اتصل بي</h2>
-        <p>البريد:mohammedey100@email.com</p>
-        <p>الهاتف: 1125287102+20  XXX XXXX</p>
-    </section>
+<footer>
+  <div class="wrap">© 2026 محمد رجب. جميع الحقوق محفوظة.</div>
+</footer>
 
-    <footer>
-        <p>© 2026 جميع الحقوق محفوظة</p>
-    </footer>
-
-    <script src="js/script.js"></script>
 </body>
 </html>
